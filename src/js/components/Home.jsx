@@ -1,25 +1,23 @@
-import React, { useState } from "react";
+import React from 'react';
+import { useState } from 'react';
 
 const Home = () => {
-	const [Red, setRed] = useState('Red')
-	console.log('rojo');
-	
-	const [Yellow, setYellow] = useState('Yellow')
-	const [Green, setGreen] = useState('Green')
+    const colors = ["red","yellow","green"]
+    const [lit, setLit] = useState("");
 
-	return (
-		<div>
-			<div className="redLight">
-				<button onClick={Red}>Red</button>
-			</div>
-			<div className="redLight">
-				<button onClick={Yellow}>Yellow</button>
-			</div>
-			<div className="redLight">
-				<button onClick={Green}>Green</button>
-			</div>
+    return (
+		<>
+		<div className="box2"></div>
+        <div className="box">
+			{colors.map((color) => {
+				return (
+					<div className={`light ${color == lit ? "lit" : ""}`} style={{backgroundColor: color}} onClick={() => setLit(color)}>
+					</div>
+				)
+			})}			
 		</div>
-	);
+		</>
+    );
 };
-
+ 
 export default Home;
